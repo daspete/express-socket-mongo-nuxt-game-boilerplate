@@ -1,0 +1,10 @@
+#!/bin/bash
+pm2 flush
+
+pm2 delete server
+pm2 delete frontend
+
+pm2 start --name="server" yarn -- dev:server
+pm2 start --name="frontend" yarn -- dev:frontend
+
+pm2 logs
